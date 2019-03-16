@@ -1,0 +1,57 @@
+
+<!-- サイドバー -->
+<!-- Home,Index.Show,Cart,Denshobato,Mypage -->
+
+<div class="side-bar">
+    <!--1段落目-->
+    <h2>ログイン</h2>
+
+    <%=form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <!--メールアドレス-->
+    <div class="field-1">
+        <%= f.label :メールアドレス %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "email" %>
+    </div>
+
+　　<!--パスワードボックス-->
+    <div class="field-2">
+    	<%= f.label :パスワード %>
+        <%= f.password_field :password, autocomplete: "current-password", class: "password" %>
+    </div>
+
+    <!--パスをお忘れですか？-->
+    <!--view作成のみ？-->
+	<%= link_to "パスワードをお忘れですか？", new_password_path(resource_name) %>
+
+    <!--ログイン-->
+    <div class="actions">
+        <%= f.submit "ログイン", class: "btn btn-primary"%>
+    </div>
+
+    <!--新規登録-->
+    <!-- まだリンク先がない？ -->
+    <%= link_to "新規登録", new_registration_path(resource_name) %>
+
+    <% end %>
+
+
+    <!--2段落目-->
+    <h2>ジャンル</h2>
+
+    <!-- 今後リンク先を貼り付ける -->
+    <h4>邦楽</h4>
+    <h4>洋楽</h4>
+    <h4>ロック</h4>
+    <h4>アニメ</h4>
+    <h4>アイドル</h4>
+    <h4>ボーカロイド</h4>
+    <h4>演歌</h4>
+    <h4>オーケストラ</h4>
+    <h4>クラシック</h4>
+    <h4>その他</h4>
+
+
+    <!--3段落目-->
+    <!--店長の紹介は消す方向なのか！？-->
+
+</div>
