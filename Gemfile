@@ -67,3 +67,10 @@ gem 'refile-mini_magick'
 gem 'pry-byebug'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'jquery-rails'
+
+# オートコンプリート機能。キーワード検索の為に実装。
+gem 'rails4-autocomplete'
+
+# 仮データの投稿のため実装。
+# db/fixtures/development & productionの作成を行なっています。
+gem 'seed-fu', '~> 2.3'
