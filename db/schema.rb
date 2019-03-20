@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_13_073818) do
+ActiveRecord::Schema.define(version: 2019_03_18_094705) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -28,6 +28,50 @@ ActiveRecord::Schema.define(version: 2019_03_13_073818) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "cd_artists", force: :cascade do |t|
+    t.integer "cd_category"
+    t.string "artist_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "cd_genres", force: :cascade do |t|
+    t.string "genre_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "cd_labels", force: :cascade do |t|
+    t.string "label_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "cd_musics", force: :cascade do |t|
+    t.string "music_name"
+    t.integer "product_id"
+    t.integer "cd_artist_id"
+    t.integer "disc_number"
+    t.integer "track_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.integer "cd_genre_id"
+    t.integer "cd_label_id"
+    t.integer "cd_type"
+    t.string "cd_name"
+    t.text "owner_comment"
+    t.string "image_id"
+    t.integer "price"
+    t.date "saled_date"
+    t.integer "stock_number"
+    t.boolean "delete_status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

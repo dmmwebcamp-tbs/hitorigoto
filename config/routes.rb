@@ -13,4 +13,10 @@ Rails.application.routes.draw do
 
   get 'credit' => 'payments#credit'
 
+  get 'products' => 'products#index'
+
+  resources :users do
+  	get :autocomplete_user_email, on: :collection # 追加
+  end
+
 end

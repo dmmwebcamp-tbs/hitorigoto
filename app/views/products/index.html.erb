@@ -1,0 +1,43 @@
+
+<!-- キーワード検索するタブを作る -->
+<!-- サンプル -->
+<!-- 機能は後日。プロダクトの登録フォームを作ってから保存できるところまで作成し、その後から作成となる。 -->
+<%= autocomplete_field_tag 'user[email]', nil,  autocomplete_user_email_users_path %>
+
+
+<!-- 商品を掲載する一覧ページ -->
+
+<h2>商品一覧</h2>
+
+<table class="table table-striped">
+
+	<thead>
+		<tr>
+	    	<th>Jacket Image</th>
+	        <th>CD Name</th>
+	        <th>Artist Name</th>
+	        <th>Price</th>
+	   </tr>
+
+	</thead>
+
+
+
+    <tbody>
+    <% @products.each do |product| %>
+		<tr>
+			<td class="image">
+				<!-- 画像のimgタグ -->
+				<!-- undefined method `image'  -->
+			    <%= attachment_image_tag product, :image, fallback:"no_image.jpg" %>
+			</td>
+			<td><%= product.cd_name %></td>
+			<!-- artist_name -->
+			<td><%= product.cd_name %></td>
+			<td><%= product.price %></td>
+			<!-- link_to "商品詳細" -->
+		</tr>
+	</tbody>
+	<% end %>
+
+</table>
