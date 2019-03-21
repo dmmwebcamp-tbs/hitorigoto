@@ -1,7 +1,7 @@
 
 <!-- サイドバー -->
 <!-- Home,Index.Show,Cart,Denshobato,Mypage -->
-
+<div class="col-xs-2">
 <div class="side-bar">
     <!--1段落目-->
     <h2>ログイン</h2>
@@ -9,13 +9,13 @@
     <%=form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <!--メールアドレス-->
     <div class="field-1">
-        <%= f.label :メールアドレス %>
+        <%= f.label :メールアドレス %><br>
         <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "email" %>
     </div>
 
 　　<!--パスワードボックス-->
     <div class="field-2">
-    	<%= f.label :パスワード %>
+    	<%= f.label :パスワード %><br>
         <%= f.password_field :password, autocomplete: "current-password", class: "password" %>
     </div>
 
@@ -54,4 +54,5 @@
     <!--3段落目-->
     <!--店長の紹介は消す方向なのか！？-->
 
+</div>
 </div>

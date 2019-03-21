@@ -14,7 +14,7 @@
       <div class="container col-xs-12">
         <div class="navbar navbar-inverse col-xs-12">
           <nav class="nav navbar-nav navbar-left text-muted">
-            <h1>店長のひとりごと</h1>
+            <h1><%= link_to "店長のひとりごと",top_path %></h1>
           </nav>
           <nav>
             <ul class="nav navbar-nav navbar-right" data-hover="dropdown" data-animations="zoomIn fadeIn fadeInUp fadeIn">
@@ -22,11 +22,11 @@
               <% if user_signed_in? %>
 
                 <li class="">
-                <%= link_to " 当サイトについて",class: "home glyphicon glyphicon-home" %>
+                <%= link_to " 当サイトについて",homes_about_path,class: "home glyphicon glyphicon-home" %>
                 </li>
 
                 <li class="">
-                <%= link_to " マイページ",class: "users glyphicon glyphicon-user" %>
+                <%= link_to " マイページ",user_mypage_path(current_user.id), class: "users glyphicon glyphicon-user" %>
                 </li>
 
                 <li class="">
@@ -34,30 +34,17 @@
                 </li>
 
                 <li class="">
-                <%= link_to " でんしょばと",class: "logout glyphicon glyphicon-log-out" %>
+                <%= link_to " でんしょばと",messages_path,class: "send glyphicon glyphicon-send" %>
                 </li>
 
                 <li class="">
-                <%= link_to " ログアウト",class: "logout glyphicon glyphicon-log-out" %>
+                <%= link_to " ログアウト",destroy_user_session_path, method: :delete, class: "logout glyphicon glyphicon-log-out" %>
 
               <% else %>
 
                 <li class="">
-                <%= link_to " 当サイトについて",new_user_session_path,class: "" %>
+                <%= link_to " 当サイトについて",homes_about_path,class: "" %>
                 </li>
-
-                <li class="">
-                <%= link_to " マイページ",new_user_session_path,class: "" %>
-                </li>
-
-                <li class="">
-                <%= link_to " 購入カート",new_user_session_path,class: "" %>
-                </li>
-
-                <li class="">
-                <%= link_to " でんしょばと",new_user_session_path,class: "" %>
-                </li>
-
 
               <% end %>
 
