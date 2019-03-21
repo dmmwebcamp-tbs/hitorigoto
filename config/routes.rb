@@ -3,6 +3,13 @@ Rails.application.routes.draw do
   get '/' => 'homes#top', as: 'top'
   get '/homes/about' => 'homes#about'
   get 'admins/owners/top' => 'admins/owners#top'
+  get '/messages' => 'messages#new'
+
+resources :users, only: [:edit, :update] do
+  get '/mypage' => 'users#mypage'
+end
+
+resources :messages, only: [:new, :create]
 
   devise_for :admins, controllers: {
   sessions:      'admins/sessions',

@@ -1,0 +1,25 @@
+<div class="container">
+	<div class="row">
+
+<h1>Messages#new</h1>
+
+<%= form_for(@message) do |f| %>
+
+<div class="field row">
+	<lavel>件名</lavel>
+	<%= f.text_field :title %>
+</div>
+
+<div class="field row">
+	<lavel>本文</lavel>
+	<%= f.text_area :body %>
+</div>
+
+<br>
+<div class="action row">
+	<%= f.submit 'でんしょばとを送る', class:"" %>
+</div>
+<% end %>
+
+</div>
+</div>
