@@ -1,0 +1,2 @@
+class CdMusic < ApplicationRecord
+end

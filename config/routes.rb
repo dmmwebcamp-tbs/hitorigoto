@@ -21,4 +21,13 @@ resources :messages, only: [:new, :create]
   registrations: 'users/registrations'
 }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  get 'credit' => 'payments#credit'
+
+  get 'products' => 'products#index'
+
+  resources :users do
+  	get :autocomplete_user_email, on: :collection # 追加
+  end
+
 end
