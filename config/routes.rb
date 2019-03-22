@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
+  get 'owners/top'
   get '/' => 'homes#top', as: 'top'
   get '/homes/about' => 'homes#about'
-  get 'admins/owners/top' => 'admins/owners#top'
   get '/messages' => 'messages#new'
 
 resources :users, only: [:edit, :update] do
