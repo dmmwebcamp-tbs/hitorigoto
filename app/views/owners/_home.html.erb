@@ -11,7 +11,7 @@
   <body>
 
     <div class="admin-title">
-         店長のひとりごと
+         <%= link_to "店長のひとりごと", owners_top_path %>
     </div>
 
     <div class="container col-xs-12">
@@ -35,7 +35,7 @@
              <li><a href="#">商品一覧</a></li>
              <li><a href="#">商品投稿</a></li>
              <li><a href="#">配送状況</a></li>
-             <li><a href="#">でんしょばと</a></li>
+             <li><%= link_to "でんしょばと", messages_path %></li>
              <li><a href="#">お客様の情報</a></li>
              <li><a rel="nofollow" data-method="delete" href="/admins/sign_out">ログアウト</a></li>
             </ul>
