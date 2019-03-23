@@ -3,15 +3,12 @@ Rails.application.routes.draw do
   get 'owners/top'
   get '/' => 'homes#top', as: 'top'
   get '/homes/about' => 'homes#about'
-  get '/messages' => 'messages#new'
-  get '/messages/index' => 'messages#index'
-  get '/messages/:id' => 'messages#show'
 
 resources :users, only: [:edit, :update] do
   get '/mypage' => 'users#mypage'
 end
 
-resources :messages, only: [:new, :create]
+resources :messages, only: [:new, :create, :index, :show]
 
   devise_for :admins, controllers: {
   sessions:      'admins/sessions',
