@@ -17,10 +17,20 @@ class MessagesController < ApplicationController
 # 管理人サイド
 
   def index
+    render :layout => nil
+     @messages =Message.all.order(updated_at: :asc)
   end
 
   def show
+    render :layout => nil
+    @message = message.find(params[:id])
   end
+
+  def search
+    #Viewのformで取得したパラメータをモデルに渡す
+    @message = Message.search(params[:search])
+  end
+
 
   	private
 		def message_params

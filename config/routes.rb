@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get '/' => 'homes#top', as: 'top'
   get '/homes/about' => 'homes#about'
   get '/messages' => 'messages#new'
+  get '/messages/index' => 'messages#index'
+  get '/messages/:id' => 'messages#show'
 
 resources :users, only: [:edit, :update] do
   get '/mypage' => 'users#mypage'

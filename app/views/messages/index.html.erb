@@ -1,2 +1,45 @@
-<h1>Messages#index</h1>
-<p>Find me in app/views/messages/index.html.erb</p>
+<%= render 'owners/home' %>
+
+<div class="container">
+        <p id="notice"></p>
+            <div class="row">
+
+              	<div>
+					　 <%= form_tag messages_index_path, :method => 'get' do %>
+       				　 <%= text_field_tag :search, params[:search] %>
+      			　　   <%= submit_tag "名前検索", :name => nil %>
+                       <% end %>
+
+				</div>
+
+            </div>
+
+              	<table class= "table table-hover table-inverse table-bordered">
+            		<thead>
+
+            		  <tr>
+              			  <th class ="user-name col-xs-2">名前</th>
+               			  <th class ="message-title col-xs-2">件名</th>
+                 		　<th class ="message-body col-xs-5">本文</th>
+                 		　<th class ="show-button col-xs-1">詳細</th>
+              		　</tr>
+          		　  </thead>
+
+           		　　 <tbody>
+           			 <% if @messages.present? %>
+              		 <% @messages.each do |message| %>
+               		  <tr class ="message-item">
+                   		　 <td class="name-user"><%= user.name %></td>
+                    	 　<td class="title-message"><%= message.title %></td>
+						   <td class="body-message"><%= message.body%></td>
+						   <td class="button-show"><%=link_to "詳細",  messages_index(user.id)%></td>
+                      </tr>
+
+                      <% end %>
+                      <% end %>
+           			 </tbody>
+      		　  </table>
+
+
+
+ </div>
