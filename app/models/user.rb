@@ -4,4 +4,5 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
          # ":recoverable"はパスワードリセット機能を示す。
+  has_many :messages
 end
