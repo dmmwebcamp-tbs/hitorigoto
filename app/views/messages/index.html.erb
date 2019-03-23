@@ -7,7 +7,7 @@
               	<div>
 					　 <%= form_tag messages_path, :method => 'get' do %>
        				　 <%= text_field_tag :search, params[:search] %>
-      			　　   <%= submit_tag "名前検索", :name => nil %>
+      			　　   <%= submit_tag "検索", :name => nil %>
                        <% end %>
 
 				</div>
@@ -31,9 +31,9 @@
                		  <tr class ="message-item">
                    		　 <td class="name-user"><%= user.name %></td>
                     	 　<td class="title-message"><%= message.title %></td>
-						   <td class="body-message"><%= message.body%></td>
-						   <td class="button-show"><%=link_to "詳細",  messages(user.id)%></td>
-                      </tr>
+						             <td class="body-message"><%= message.body%></td>
+						             <td class="button-show"><%=link_to "詳細",  messages_path(user.id)%></td>
+                    </tr>
 
                       <% end %>
                       <% end %>

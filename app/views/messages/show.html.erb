@@ -9,12 +9,15 @@
 
 
 <div class="panel panel-info ">
-	<div class="panel-heading message-title">
-		<%= @message.title %>
+	<div class="panel-heading">
+		<h5 class="panel-title"><%= @message.title %></h5>
 	</div>
-	<div class="panel-body message-body">
+	<div class="panel-body">
 		<%= @message.body %>
 	</div>
 </div>
 
 <% end %>
+
+<button type="button" class="btn btn-default"><%= link_to "お返事する", new_user_path(@user) %></button>
+ <button type="button" class="btn btn-default"><%= link_to "戻る", messages_path %></button>
