@@ -13,10 +13,10 @@
 
 	<thead>
 		<tr>
-	    	<th>AJacket Image</th>
-	        <th>CD Name</th>
-	        <th>Artist Name</th>
-	        <th>Price</th>
+	    	<th>CDジャケット</th>
+	        <th>シングル/アルバム名</th>
+	        <th>アーティスト名</th>
+	        <th>値段</th>
 	   </tr>
 
 	</thead>
@@ -28,10 +28,9 @@
 		<tr>
 			<td class="image">
 				<!-- 画像のimgタグ -->
-				<!-- undefined method `image'  -->
 			    <%= attachment_image_tag product, :image, fallback:"no_image.jpg" %>
 			</td>
-			<td><%= product.cd_name %></td>
+			<td><%=link_to product.cd_name, product_path(product) %></td>
 			<!-- artist_name -->
 			<td><%= product.cd_name %></td>
 			<td><%= product.price %></td>

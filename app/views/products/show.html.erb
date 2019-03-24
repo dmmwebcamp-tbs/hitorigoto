@@ -1,0 +1,49 @@
+
+<!-- 商品詳細を表示するページ -->
+<h2>商品詳細</h2>
+
+<!-- イメージ -->
+	<div class="image">
+		<!-- 画像のimgタグ -->
+		<%= attachment_image_tag @product, :image, fallback:"no_image.jpg" %>
+
+	</div>
+
+<!-- 詳細テーブル -->
+	<table>
+		<thead>
+			<th>アーティスト名</th>
+	        <th>シングル/アルバム名</th>
+	        <th>値段</th>
+	        <th>レーベル名</th>
+	        <th>曲名</th>
+	        <th>在庫数</th>
+	        <th>店長のひとりごと</th>
+		</thead>
+
+		<tbody>
+			<tr>
+				<!-- 各所からデータを持ってくる. -->
+				<% @artists.each do |artist| %>
+					<td><%= artist.cd_artist.artist_name %></td>
+				<% end %>
+				<td><%= @product.cd_name %></td>
+				<td><%= @product.price %></td>
+				<% @musics.where(product_id: @product.id).each do |music| %>
+						<td><%= music.music_name %></td>
+				<% end %>
+				<td><%= @product.stock_number %></td>
+				<td><%= @product.owner_comment %></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<!-- ボタン（カートに入れる、戻る） -->
+	<%= form_for(@payment) do |f| %>
+
+        <div class="actions">
+		    <%= f.submit '購入カートに入れる', class: "btn btn-success" %>
+		    <%= f.submit '戻る', class: "btn btn-info" %>
+		</div>
+
+	<% end %>
