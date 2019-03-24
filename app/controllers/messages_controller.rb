@@ -23,8 +23,9 @@ class MessagesController < ApplicationController
   end
 
   def show
-    @message = Message.find(params[:id])
-     render layout: false
+    @message = Message.find_by_id(params[:id])
+    @user = User.find_by_id(params[:id])
+    render layout: false
   end
 
   def search
@@ -37,5 +38,6 @@ class MessagesController < ApplicationController
 		def message_params
 			params.require(:message).permit(:title, :body)
 		end
+
 
 end

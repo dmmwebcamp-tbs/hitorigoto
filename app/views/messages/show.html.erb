@@ -1,1 +1,23 @@
-<%= render 'owners/home' %>
+<%= render 'owners/home', user: @user, message: @message %>
+
+<% if @messages.present? %>
+<ul class="list-group">
+	<li class="fullname"><%= @user.last_name %><%= @user.first_name %></li>
+	<li class="fullname-kana"><%= @user.last_name_kana %><%= @user.first_name_kana %></li>
+	<li class="email"><%= @user.email %></li>
+</ul>
+
+
+<div class="panel panel-info ">
+	<div class="panel-heading">
+		<h5 class="panel-title"><%= @message.title %></h5>
+	</div>
+	<div class="panel-body">
+		<%= @message.body %>
+	</div>
+</div>
+
+<% end %>
+
+<button type="button" class="btn btn-default"><%= link_to "お返事する", new_user_path(@user) %></button>
+ <button type="button" class="btn btn-default"><%= link_to "戻る", messages_path %></button>
