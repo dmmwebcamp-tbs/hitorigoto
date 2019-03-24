@@ -1,0 +1,42 @@
+<!-- カート内確認 -->
+    <table class="table table-striped">
+
+      <thead>
+        <tr>
+          <th>ジャケット画像</th>
+          <th>ディスク名</th>
+          <th>値段</th>
+        </tr>
+      </thead>
+
+      <tbody>
+       <% @products.each do |product| %>
+        <tr>
+          <!-- 商品情報 -->
+          <!-- ジャケット画像 -->
+          <td class="image">
+          <%= attachment_image_tag product, :image, fallback:"no_image.jpg" %>
+          </td>
+          <!-- CD名 -->
+          <td><%=link_to product.cd_name, product_path(product) %></td>
+          <td><%= product.cd_name %></td>
+          <!-- 値段 -->
+          <td><%= product.price %></td>
+
+          <!-- 購入取消ボタン -->
+          <td><%= link_to "購入取消", product_path(product), method: :delete, data: { confirm: '購入を取り消しますか?'} %></td>
+          <% end %>
+        </tr>
+      </tbody>
+
+    </table>
+
+
+    <!-- 購入手続き、戻るボタン -->
+
+        <div class="actions">
+          <%= link_to '購入手続きに進む', top_path, class: "btn btn-success" %>
+          <%= link_to '戻る', top_path, class: "btn btn-info" %>
+        </div>
+
+
