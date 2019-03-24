@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   get 'owners/top'
   get '/' => 'homes#top', as: 'top'
   get '/homes/about' => 'homes#about'
@@ -12,6 +13,10 @@ resources :users, only: [:edit, :update] do
 end
 
 resources :messages, only: [:new, :create]
+
+resources :cdposts
+
+resources :cd_artists
 
   devise_for :admins, controllers: {
   sessions:      'admins/sessions',

@@ -29,10 +29,10 @@
            			 <% if @messages.present? %>
               		 <% @messages.each do |message| %>
                		  <tr class ="message-item">
-                   		　 <td class="name-user"><%= user.name %></td>
+                   		　 <td class="name-user"><%= message.user_id %></td>
                     	 　<td class="title-message"><%= message.title %></td>
-						   <td class="body-message"><%= message.body%></td>
-						   <td class="button-show"><%=link_to "詳細",  messages_index(user.id)%></td>
+						   <td class="body-message"><%= message.body %></td>
+						   <td class="button-show"><%=link_to "詳細",  messages_index_path %></td>
                       </tr>
 
                       <% end %>

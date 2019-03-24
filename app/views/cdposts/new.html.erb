@@ -1,0 +1,70 @@
+<%= render 'owners/home' %>
+
+<div class="col-xs-3">
+	<div class="products-container">
+
+
+	</div>
+</div>
+
+<div class="col-xs-9">
+	<div>
+
+<%= form_for(@product) do |f| %>
+
+<div class="field row">
+	<lavel>商品名</lavel><br>
+	<%= f.text_field :cd_name %>
+</div>
+
+<div class="field row">
+	<lavel>シングル/アルバム</lavel><br>
+	<%= f.text_field :cd_type %>
+</div>
+
+<div class="field row">
+	<lavel>価格</lavel><br>
+	<%= f.text_field :price %>
+</div>
+
+<div class="field row">
+	<lavel>レーベル名</lavel><br>
+	<%= f.text_field :cd_label_id %>
+</div>
+
+<div class="field row">
+	<lavel>ジャンル名</lavel><br>
+	<%= f.text_field :cd_genre_id %>
+</div>
+
+<div class="field row">
+	<lavel>発売日</lavel><br>
+	<%= f.text_field :saled_date %>
+</div>
+
+<div class="field row">
+	<lavel>在庫数</lavel><br>
+	<%= f.text_field :stock_number %>
+</div>
+
+<div class="field row">
+	<lavel>店長のひとりごと</lavel><br>
+	<%= f.text_area :owner_comment %>
+</div>
+
+<div class="field row">
+	<lavel>画像</lavel><br>
+	<%= f.text_field :image_id %>
+</div>
+
+<br>
+<div class="action row">
+	<%= f.submit '登録', class:"" %>
+</div>
+<% end %>
+
+
+
+
+	</div>
+</div>
