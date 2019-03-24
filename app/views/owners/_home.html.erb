@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hitorigoto</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+
+    <div class="admin-title">
+         <%= link_to "店長のひとりごと", owners_top_path %>
+    </div>
+
+    <div class="container col-xs-12">
+
+        <nav class="navbar navbar-inverse">
+          <div class="container col-xs-3">
+          </div>
+          <div class="container col-xs-9">
+          <div class="container-fluid">
+            <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed " data-toggle="collapse" data-target="#navbarEexample7">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            </div>
+          </div>
+          <div class="collapse navbar-collapse justify-content-center" id="navbarEexample7">
+            <ul class="nav navbar-nav">
+             <li><a href="#">商品一覧</a></li>
+             <li><a href="#">商品投稿</a></li>
+             <li><a href="#">配送状況</a></li>
+             <li><%= link_to "でんしょばと", messages_path %></li>
+             <li><a href="#">お客様の情報</a></li>
+             <li><a rel="nofollow" data-method="delete" href="/admins/sign_out">ログアウト</a></li>
+            </ul>
+          </div>
+        </div>
+        </nav>
+    </div>
