@@ -8,6 +8,7 @@ class MessagesController < ApplicationController
 
   def create
   	@message = Message.new(message_params)
+    @message.user_id = current_user.id
   	@message.save
   	flash[:notice] = "Message was successfully sent."
   	redirect_to top_path
@@ -18,11 +19,13 @@ class MessagesController < ApplicationController
 
   def index
      @messages =Message.all.order(updated_at: :asc)
+     render layout: false
   end
 
   def show
     @message = Message.find_by_id(params[:id])
     @user = User.find_by_id(params[:id])
+    render layout: false
   end
 
   def search

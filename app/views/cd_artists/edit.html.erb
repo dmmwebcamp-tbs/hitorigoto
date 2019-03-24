@@ -1,0 +1,26 @@
+<%= render 'owners/home' %>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+
+			<h1>アーティスト編集</h1>
+
+			<%= form_for(@cd_artist) do |f| %>
+
+		<div class="field row">
+			<lavel>アーティスト名</lavel>
+				<%= f.text_field :artist_name,class:"col-xs-12" %>
+		</div>
+		<div class="field row">
+			<lavel>邦楽/洋楽</lavel>
+				<%= f.select :cd_category,[["邦楽","0"],["洋楽","1"]],class:"col-xs-12" %><br>
+
+			<%= f.submit '更新',class:"btn btn-primary col-xs-12" %><br>
+
+			<%= link_to "戻る",cd_artists_path,class:"back" %>
+
+			<% end %>
+		</div>
+	</div>
+</div>
