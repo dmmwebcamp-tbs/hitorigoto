@@ -47,7 +47,8 @@
                		  <tr class ="message-item">
                    		　 <td class="name-user"><%= cd_artist.id %></td>
                     	 　<td class="artist-name"><%= cd_artist.artist_name %></td>
-						   <td class="category"><%= cd_artist.cd_category %></td>
+
+						   <td class="category"><%= decode_category cd_artist.cd_category %></td>
 						   <td class="button-show"><%=link_to "編集", edit_cd_artist_path(cd_artist.id),class:"btn-sm btn-success" %></td>
 						   <td class="button-show"><%=link_to "削除", cd_artist_path(cd_artist.id),class:"btn-sm btn-danger",method: :delete, data: {confirm: '本当に削除してよろしいですか？'} %></td>
                       </tr>

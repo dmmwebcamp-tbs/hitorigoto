@@ -1,4 +1,69 @@
 <%= render 'owners/home' %>
 
-<h1>Cdposts#edit</h1>
-<p>Find me in app/views/cdposts/edit.html.erb</p>
+<div class="container">
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+
+			<h1>商品編集</h1>
+
+			<%= form_for(@product) do |f| %>
+
+			<div class="field row">
+				<lavel>商品名</lavel><br>
+				<%= f.text_field :cd_name %>
+			</div>
+
+			<div class="field row">
+				<lavel>アーティスト名</lavel><br>
+				<%= f.collection_select :cd_artist_id, CdArtist.all, :id, :artist_name %>
+			</div>
+
+			<div class="field row">
+				<lavel>シングル/アルバム</lavel><br>
+				<%= f.select :cd_type,[["シングル","0"],["アルバム","1"]],class:"col-xs-12" %><br>
+			</div>
+
+
+			<div class="field row">
+				<lavel>価格</lavel><br>
+				<%= f.text_field :price %>
+			</div>
+
+			<div class="field row">
+				<lavel>レーベル名</lavel><br>
+				<%= f.collection_select :cd_label_id, CdLabel.all, :id, :label_name %>
+			</div>
+
+			<div class="field row">
+				<lavel>ジャンル名</lavel><br>
+				<%= f.collection_select :cd_genre_id, CdGenre.all, :id, :genre_name %>
+			</div>
+
+			<div class="field row">
+				<lavel>発売日</lavel><br>
+				<%= f.text_field :saled_date %>
+			</div>
+
+			<div class="field row">
+				<lavel>在庫数</lavel><br>
+				<%= f.text_field :stock_number %>
+			</div>
+
+			<div class="field row">
+				<lavel>店長のひとりごと</lavel><br>
+				<%= f.text_area :owner_comment %>
+			</div>
+
+			<div class="field row">
+				<lavel>画像</lavel><br>
+				<%= f.attachment_field :image %>
+			</div>
+
+			<%= f.submit '更新',class:"btn btn-primary col-xs-12" %><br>
+
+			<%= link_to "戻る",cdposts_path,class:"back" %>
+
+			<% end %>
+		</div>
+	</div>
+</div>
