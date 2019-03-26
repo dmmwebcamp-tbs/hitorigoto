@@ -13,8 +13,8 @@ resources :messages, only: [:new, :create, :index, :show]
 
 
 resources :cdposts
-
 resources :cd_artists
+resources :cd_labels
 
   devise_for :admins, controllers: {
   sessions:      'admins/sessions',

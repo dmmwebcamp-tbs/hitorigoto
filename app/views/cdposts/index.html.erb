@@ -1,6 +1,51 @@
 <%= render 'owners/home' %>
+<% if flash[:notice] %>
+	<p><%= flash[:notice] %></p>
+<% end %>
+<h2>商品投稿メニュー</h2>
 
-<h1>Cdposts#index</h1>
-
+<%= link_to "商品登録",new_cdpost_path, class:"" %><br>
 <%= link_to "アーティスト登録",cd_artists_path, class:"" %><br>
-<%= link_to "レーベル登録", class:"" %><br>
+<%= link_to "レーベル登録",cd_labels_path, class:"" %><br>
+
+
+<h2>商品一覧</h2>
+
+				<table class= "table table-hover table-inverse table-bordered">
+            		<thead>
+
+            		  <tr>
+              			  <th class ="artist_number col-xs-1">商品番号</th>
+              			  <th class ="artist_number col-xs-1">ジャケット</th>
+              			  <th class ="artist_number col-xs-1">商品名</th>
+               			  <th class ="artist_name col-xs-2">アーティスト名</th>
+                 		　<th class ="cd_category col-xs-1">価格</th>
+　                 		　<th class ="cd_category col-xs-1">在庫数</th>
+                 		　<th class ="edit-button col-xs-1">編集</th>
+                   		 <th class ="edit-button col-xs-1">削除</th>
+              		　</tr>
+          		　  </thead>
+
+           		　　 <tbody>
+              		 <% @products.each do |product| %>
+               		  <tr class ="message-item">
+               		  	   <td class="product-id"><%= product.id %></td>
+               		  	   <td><%= attachment_image_tag product,:image, :fill, 40, 40, format: 'jpeg',fallback: "no_image.jpg", :size => "40x40" %></td>
+               		  	   <td class="product-id"><%= product.cd_name %></td>
+               		  	   <!-- アーティストの表記がうまくいかない。楽曲モデルを作成後、対応。 (3/26 久保) -->
+                    	 　<td class="artist-name">
+                    	 	<%= product.cd_artists.each do |artist| %>
+                    	 		artist.artist_name
+                    	 	<% end %>
+                    	 </td>
+						   <td class="price"><%= product.price %></td>
+						   <td class="stock"><%= product.stock_number %></td>
+						   <td class="button-edit"><%=link_to "商品詳細・編集", edit_cdpost_path(product.id),class:"btn-sm btn-success" %></td>
+						   <td class="button-destroy"><%=link_to "削除", cdpost_path(product.id),class:"btn-sm btn-danger",method: :delete, data: {confirm: '本当に削除してよろしいですか？'} %></td>
+                      </tr>
+
+
+                      <% end %>
+           			 </tbody>
+      		　  </table>
+

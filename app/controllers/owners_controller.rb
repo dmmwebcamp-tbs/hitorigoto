@@ -1,5 +1,5 @@
 class OwnersController < ApplicationController
   def top
-  	render :layout => nil
+  	render :layout => false
   end
 end

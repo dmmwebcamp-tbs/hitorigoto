@@ -2,17 +2,17 @@
 # seed-fuを実装。
 CdGenre.seed do |s|
   s.id = 1
-  s.genre_name = "アニメ"
+  s.genre_name = "ロック"
 end
 
 CdGenre.seed do |s|
   s.id = 2
-  s.genre_name = "洋楽"
+  s.genre_name = "ジャズ"
 end
 
 CdGenre.seed do |s|
   s.id = 3
-  s.genre_name = "ロック"
+  s.genre_name = "クラシック"
 end
 
 CdGenre.seed do |s|
@@ -22,9 +22,33 @@ end
 
 CdGenre.seed do |s|
   s.id = 5
-  s.genre_name = "アイドル"
+  s.genre_name = "ソウル"
 end
 
+CdGenre.seed do |s|
+  s.id = 6
+  s.genre_name = "R&B"
+end
+
+CdGenre.seed do |s|
+  s.id = 7
+  s.genre_name = "歌謡曲・演歌"
+end
+
+CdGenre.seed do |s|
+  s.id = 8
+  s.genre_name = "サウンドトラック"
+end
+
+CdGenre.seed do |s|
+  s.id = 9
+  s.genre_name = "K-ポップ"
+end
+
+CdGenre.seed do |s|
+  s.id = 10
+  s.genre_name = "アニメ・ゲーム"
+end
 
 # Cd_label.create!(
 #   id: 1
