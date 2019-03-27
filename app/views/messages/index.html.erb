@@ -26,16 +26,15 @@
           		　  </thead>
 
            		　　 <tbody>
-           			 <% if @messages.present? %>
               		 <% @messages.each do |message| %>
                		  <tr class ="message-item">
-                   		　 <td class="name-user"><%= message.user_id %></td>
+                   		　 <td class="name-user">
+                       <%= message.user.last_name %><%= message.user.first_name%>
+                      </td>
                     	 　<td class="title-message"><%= message.title %></td>
 						             <td class="body-message"><%= message.body%></td>
-						             <td class="button-show"><%=link_to "詳細",  messages_path(user.id)%></td>
+						             <td class="button-show"><%=link_to "詳細",  message_path(message.id)%></td>
                     </tr>
-
-                      <% end %>
                       <% end %>
            			 </tbody>
       		　  </table>

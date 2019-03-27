@@ -1,23 +1,41 @@
 <%= render 'owners/home', user: @user, message: @message %>
 
-<% if @messages.present? %>
-<ul class="list-group">
-	<li class="fullname"><%= @user.last_name %><%= @user.first_name %></li>
-	<li class="fullname-kana"><%= @user.last_name_kana %><%= @user.first_name_kana %></li>
-	<li class="email"><%= @user.email %></li>
-</ul>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-5">
+			<div class="col-xs-5">
+				<ul class="list-group">
+					<li class="fullname">名前：<%= @user.last_name %><%= @user.first_name %></li>
+					<li class="fullname-kana">カナ：<%= @user.last_name_kana %><%= @user.first_name_kana %></li>
+					<li class="email">メール： <%= @user.email %></li>
+				</ul>
+			</div>
 
-
-<div class="panel panel-info ">
-	<div class="panel-heading">
-		<h5 class="panel-title"><%= @message.title %></h5>
+			<div class="col-xs-7">
+		<div class="profile-container">
+			<div class="panel panel-info ">
+				<div class="panel-heading">
+					<h5 class="panel-title"><%= @message.title %></h5>
+				</div>
+				<div class="panel-body">
+					<%= @message.body %>
+				</div>
+			</div>
+		</div>
+			</div>
+		</div>
+	<div class="col-xs-4">
 	</div>
-	<div class="panel-body">
-		<%= @message.body %>
 	</div>
 </div>
 
-<% end %>
-
-<button type="button" class="btn btn-default"><%= link_to "お返事する", new_user_path(@user) %></button>
- <button type="button" class="btn btn-default"><%= link_to "戻る", messages_path %></button>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-5">
+		<button type="button" class="btn btn-default"><%= link_to "お返事する", user_path(@user) %>	</button>
+ 		<button type="button" class="btn btn-default"><%= link_to "戻る", messages_path %></button>
+ 	</div>
+ 	<div class="col-xs-7">
+	</div>
+ </div>
+</div>

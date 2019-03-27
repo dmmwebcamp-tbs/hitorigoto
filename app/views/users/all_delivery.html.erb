@@ -1,0 +1,47 @@
+<%= render 'owners/home' %>
+<div class="container">
+        <p id="notice"></p>
+
+              	<table class= "table table-hover table-inverse table-bordered">
+            		<thead>
+
+            		  <tr>
+                      <th class ="user-name col-xs-1">購入者</th>
+              			  <th class ="shopping_date col-xs-1">購入日</th>
+               			  <th class ="shopping_contents col-xs-2">購入内容(名前)</th>
+                 		　<th class ="shopping_price col-xs-1">(価格)</th>
+                 		　<th class ="shopping_account col-xs-1">数量</th>
+                      <th class ="total_price col-xs-2">購入価格総計</th>
+                      <th class ="address col-xs-2">送付先</th>
+                      <th class ="status col-xs-1">ステータス</th>
+                      <th class ="user_show col-xs-1">ユーザ詳細</th>
+              		　</tr>
+          		　  </thead>
+
+           		　　 <tbody>
+              		 <% @users.each do |user| %>
+               		  <tr class ="shopping-data">
+                   		　 <td class=user-name><%= user.last_name %><%= user.first_name %></td>
+                    	 　<td class="shopping_date"><%= user.remember_created_at %></td>
+						             <td class="shopping_contents"><%= user.first_name %></td>
+						             <td class="shopping_price"><%= user.phone_number %></td>
+                         <td class="shopping_account"><%= user.email %></td>
+                         <td class="total_price"><%= user.email %></td>
+                         <td class="address"><%= user.email %></td>
+                         <td class="status"><%= user.email %></td>
+                         <td class="user_show"><%= user.email %></td>
+
+                            <button type="button" class="btn btn-default"><%= link_to "詳細",   new_user_path(user.id) %></button>
+                            <button type="button" class="btn btn-default"><%= link_to "購入履歴・配送状況詳細", _path %></button>
+                         </td>
+                    </tr>
+
+                      <% end %>
+           			 </tbody>
+      		　  </table>
+
+          <button type="button" class="btn btn-default"><%= link_to "戻る", owners_top_path, class: "back"%></button>
+
+
+
+ </div>

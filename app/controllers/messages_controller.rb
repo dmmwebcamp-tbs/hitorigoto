@@ -18,13 +18,13 @@ class MessagesController < ApplicationController
 # 管理人サイド
 
   def index
-     @messages =Message.all.order(updated_at: :asc)
-     render layout: false
-  end
+     @messages =Message.all
+      render layout: false
+   end
 
   def show
-    @message = Message.find_by_id(params[:id])
-    @user = User.find_by_id(params[:id])
+    @message = Message.find(params[:id])
+    @user = User.find(@message.user_id)
     render layout: false
   end
 
@@ -38,6 +38,5 @@ class MessagesController < ApplicationController
 		def message_params
 			params.require(:message).permit(:title, :body)
 		end
-
 
 end
