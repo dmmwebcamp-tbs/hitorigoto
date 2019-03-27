@@ -1,0 +1,54 @@
+<%= render 'owners/home' %>
+<% if flash[:notice] %>
+	<p><%= flash[:notice] %></p>
+<% end %>
+
+<div class="container">
+
+<div class="field row">
+	<h2>レーベル登録</h2>
+	<%= form_for(@cd_label) do |f| %>
+
+	<div class="field row">
+	<lavel>レーベル名</lavel>
+	<%= f.text_field :label_name, class:"" %>
+	</div>
+
+	<br>
+	<div class="action row">
+	<%= f.submit 'レーベルを登録する', class:"btn btn-primary" %>
+	</div>
+	<% end %>
+
+</div>
+
+	<h2>レーベル一覧</h2>
+
+				<table class= "table table-hover table-inverse table-bordered">
+            		<thead>
+
+            		  <tr>
+              			  <th class ="artist_number col-xs-1">番号</th>
+               			  <th class ="artist_name col-xs-5">レーベル名</th>
+                 		　<th class ="edit-button col-xs-2">編集</th>
+                   		 <th class ="edit-button col-xs-2">削除</th>
+              		　</tr>
+          		　  </thead>
+
+           		　　 <tbody>
+           			 <% if @cd_labels.present? %>
+              		 <% @cd_labels.each do |cd_label| %>
+               		  <tr class ="message-item">
+                   		　 <td class="name-user"><%= cd_label.id %></td>
+                    	 　<td class="artist-name"><%= cd_label.label_name %></td>
+						   <td class="button-show"><%=link_to "編集", edit_cd_label_path(cd_label.id),class:"btn-sm btn-success" %></td>
+						   <td class="button-show"><%=link_to "削除", cd_label_path(cd_label.id),class:"btn-sm btn-danger",method: :delete, data: {confirm: '本当に削除してよろしいですか？'} %></td>
+                      </tr>
+
+                      <% end %>
+                      <% end %>
+           			 </tbody>
+      		　  </table>
+
+
+</div>

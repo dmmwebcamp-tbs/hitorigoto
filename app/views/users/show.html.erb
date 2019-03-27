@@ -1,0 +1,71 @@
+<%= render 'owners/home', user: @user, message: @message %>
+<%= flash[:success] %>
+<h3 class="top-title">ユーザ情報（詳細・編集・削除)</h3>
+
+
+<div class="container">
+   <div class="row">
+	   <div class="col-xs-6">
+			<%= form_for(@user, :url => {controller: "users", method: "patch", action: "admin_update", user_id: @user.id}) do |f| %>
+
+				<table class="table table-hover table-inverse table-bordered">
+					<tbody>
+						<tr>
+							<th>名前</th>
+							<th><%= f.text_field :last_name, autofocus: true %><%= f.text_field :first_name, autofocus: true %></th>
+						</tr>
+						<tr>
+							<th>名前（カナ）</th>
+							<th><%= f.text_field :last_name_kana, autofocus: true %><%= f.text_field :first_name_kana, autofocus: true %></th>
+						</tr>
+						<tr>
+							<th>郵便番号</th>
+							<th><%= f.text_field :postcode, autofocus: true %></th>
+						</tr>
+						<tr>
+							<th>住所</th>
+							<th><%= f.text_field :address, autofocus: true %></th>
+						</tr>
+						<tr>
+							<th>電話番号</th>
+							<th><%= f.text_field :phone_number, autofocus: true %></th>
+						</tr>
+					</tbody>
+				</table>
+
+					<%= f.submit "個人情報の更新", class:"col-xs-12 btn btn-default glyphicon glyphicon-wrench"  %>
+			<% end %>
+		</div>
+		<div class="col-xs-6">
+		<div class ="admin_message">
+			<%= form_for(@user, :url => {controller: "users", method: "patch", action: "admin_update", user_id: @user.id}) do |f| %>
+
+			<div class="panel panel-default">
+				<div class="panel-heading">
+				でんしょばと　お返事欄
+				</div>
+				<div class="panel-body">
+					<%= f.text_area :reply %>
+				</div>
+				<div class="panel-footer">
+					<%= f.submit 'メッセージの送信' %>
+				</div>
+
+			</div>
+			<% end %>
+
+
+		</div>
+	 </div>
+
+	</div>
+</div>
+
+<br>
+<br>
+
+<div class="container">
+   <div class="row">
+		<%= link_to 'ユーザー削除', users_path(@user), class:  "btn btn-danger btn-xs", method: :delete, data: { confirm: '本当に削除しますか?' } %>
+   </div>
+</div>
