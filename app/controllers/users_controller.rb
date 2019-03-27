@@ -1,22 +1,36 @@
 class UsersController < ApplicationController
 
 # 管理人サイド
+  def new
+    @user =User.new
+    @message =Message.new
+  end
 
   def index
+    @user =User.all
+    render layout: false
   end
 
   def show
+    @message = Message.find(params[:id])
+    @user = User.find(@message.user_id)
+    render layout: false
   end
 
-  def update
+  def admin_update
+    user =User.find(params[:user_id])
+    if user.update(user_params)
+      flash[:success] = "successfully updated."
+      redirect_to user_path(user.id)
+    end
   end
 
   def all_delivery
+    render layout: false
   end
 
   def all_destroy
   end
-
 
 # ユーザサイド
 
@@ -58,7 +72,7 @@ class UsersController < ApplicationController
 
 private
   def user_params
-    params.require(:user).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :postcode, :address, :phone_number )
+    params.require(:user).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :postcode, :address, :phone_number, :reply)
   end
 
 
