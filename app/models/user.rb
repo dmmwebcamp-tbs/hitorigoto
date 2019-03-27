@@ -5,4 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
          # ":recoverable"はパスワードリセット機能を示す。
   has_many :messages
+  has_many :putchases
 end

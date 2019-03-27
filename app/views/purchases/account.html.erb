@@ -1,5 +1,52 @@
 
-<h1>店長のひとりごと</h1>
+<h3>お届け先</h3>
 
-<!-- メニューバー -->
+<%= form_for(@purchases) do |f| %>
+
+	<h4>郵便番号</h4>
+	<%= f.text_field :add_postcode %>
+
+	<h4>住所</h4>
+	<%= f.text_field :add_address %>
+
+	<h4>電話番号</h4>
+	<%= f.text_field :add_number %>
+
+    <!--お支払い方法、プルダウン-->
+    <p><%= f.label :"お支払い方法" %>
+    <%= f.select :payment, [["現金", "現金"], ["クレジット", "クレジット"]] ,class:"form-control" %></p>
+
+
+<% end %>
+
+
+<!--カード決済、リンク先-->
+
+
+<h3>購入商品詳細</h3>
+<!--購入詳細テーブル-->
+	<table>
+		<thead>
+			<tr>
+				<th>商品名</th>
+				<th>金額</th>
+				<th>数量</th>
+			</tr>
+		</thead>
+
+		<tbody>
+		<!--持ってくるのはproducts?,purchases?-->
+		<% @products.each do |product| %>
+			<tr>
+				<!--商品名、金額、数量データの反映-->
+				<td><%= product.cd_name %></td>
+				<td><%= product.price %></td>
+				<td><%= product.quantity %></td>
+			</tr>
+		<% end %>
+		</tbody>
+	</table>
+
+
+<!--購入確定、戻るボタン、リンク先-->
 

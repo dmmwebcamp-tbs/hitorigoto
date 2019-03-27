@@ -5,8 +5,10 @@ Rails.application.routes.draw do
   get '/' => 'homes#top', as: 'top'
   get '/homes/about' => 'homes#about'
 
-resources :users, only: [:edit, :update] do
+resources :users do
   get '/mypage' => 'users#mypage'
+  patch '/admin' => 'users#admin_update'
+  get :autocomplete_user_email, on: :collection
 end
 
 resources :messages, only: [:new, :create, :index, :show]
@@ -33,11 +35,20 @@ resources :cd_labels
 
   get 'index' => 'carts#index'
 
+  get 'account' => 'purchases#account'
+
 
   resources :products
+
+
+  resources :purchases, only: [:create]
 
   resources :users do
   	get :autocomplete_user_email, on: :collection # 追加
   end
+
+  get 'users/all_delivery'
+  get 'users/all_history'
+
 
 end
