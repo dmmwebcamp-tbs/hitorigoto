@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_25_035756) do
+
+ActiveRecord::Schema.define(version: 2019_03_26_070106) do
+
+
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -28,6 +31,14 @@ ActiveRecord::Schema.define(version: 2019_03_25_035756) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "cart_products", force: :cascade do |t|
+    t.integer "product_id"
+    t.integer "cart_id"
+    t.string "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "cd_artists", force: :cascade do |t|
@@ -81,6 +92,27 @@ ActiveRecord::Schema.define(version: 2019_03_25_035756) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "cd_artist_id"
+  end
+
+  create_table "purchases", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "sum"
+    t.integer "delivery_status"
+    t.integer "payment"
+    t.string "add_postcode"
+    t.string "add_address"
+    t.string "add_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "shopping_histories", force: :cascade do |t|
+    t.integer "product_id"
+    t.integer "purchase_id"
+    t.string "quantity"
+    t.string "paid_price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

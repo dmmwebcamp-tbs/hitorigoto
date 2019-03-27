@@ -35,10 +35,20 @@ resources :cd_labels
 
   get 'index' => 'carts#index'
 
+  get 'account' => 'purchases#account'
+
 
   resources :products
 
+
+  resources :purchases, only: [:create]
+
+  resources :users do
+  	get :autocomplete_user_email, on: :collection # 追加
+  end
+
   get 'users/all_delivery'
   get 'users/all_history'
+
 
 end
