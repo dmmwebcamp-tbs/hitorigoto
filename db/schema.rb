@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_25_035756) do
+ActiveRecord::Schema.define(version: 2019_03_27_091655) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -52,7 +52,6 @@ ActiveRecord::Schema.define(version: 2019_03_25_035756) do
   create_table "cd_musics", force: :cascade do |t|
     t.string "music_name"
     t.integer "product_id"
-    t.integer "cd_artist_id"
     t.integer "disc_number"
     t.integer "track_number"
     t.datetime "created_at", null: false

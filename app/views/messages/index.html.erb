@@ -32,7 +32,7 @@
                    		　 <td class="name-user"><%= message.user_id %></td>
                     	 　<td class="title-message"><%= message.title %></td>
 						             <td class="body-message"><%= message.body%></td>
-						             <td class="button-show"><%=link_to "詳細",message_path(user.id)%></td>
+						             <td class="button-show"><%=link_to "詳細",message_path(message.id)%></td>
                     </tr>
 
                       <% end %>
