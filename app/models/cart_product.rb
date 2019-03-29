@@ -1,6 +1,7 @@
 class CartProduct < ApplicationRecord
 
-	belongs_to :User
-	belongs_to :Product
+    # 中間テーブル用
+	belongs_to :user
+	belongs_to :product
 
 end
