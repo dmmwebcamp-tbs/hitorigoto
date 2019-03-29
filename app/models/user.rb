@@ -6,4 +6,11 @@ class User < ApplicationRecord
          # ":recoverable"はパスワードリセット機能を示す。
   has_many :messages
   has_many :putchases
+
+   # 中間テーブル用
+   has_many :cart_products
+   has_many :products, through: :carts_products
+
+
+
 end
