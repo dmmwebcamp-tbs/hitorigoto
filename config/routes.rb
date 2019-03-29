@@ -1,3 +1,4 @@
+
 Rails.application.routes.draw do
 
 
@@ -27,7 +28,7 @@ resources :cd_labels
   get 'credit' => 'payments#credit'
   # get 'products' => 'products#index'
 
-  get 'index' => 'carts#index'
+  get 'carts' => 'carts#index'
 
   get 'account' => 'purchases#account'
 
@@ -43,7 +44,10 @@ resources :users do
   get :autocomplete_user_email, on: :collection
 end
 
-  resources :products
+  resources :products do
+    resources :cart_products, only: [:create]
+  end
+  # post 'carts' => 'cart_products#create', as: "cart_product"
 
 
   resources :purchases, only: [:create, :update]
@@ -51,6 +55,7 @@ end
   resources :users do
     get :autocomplete_user_email, on: :collection # 追加
   end
+
 
 
 end

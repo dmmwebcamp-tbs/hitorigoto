@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
          # ":recoverable"はパスワードリセット機能を示す。
   has_many :messages
+
   has_many :purchases
 
   def self.search(search)
@@ -15,4 +16,11 @@ class User < ApplicationRecord
         User.all
       end
   end
+
+
+
+   # 中間テーブル用
+   has_many :cart_products
+   has_many :products, through: :carts_products
+
 end
