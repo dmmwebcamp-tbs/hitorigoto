@@ -37,20 +37,23 @@ class ProductsController < ApplicationController
 # ユーザ側
 
 
-    def index
-    	@products = Product.all
+  def index
+    @products = Product.all
 	end
 
-	def show
-		@product = Product.find(params[:id])
-		@artists = @product.cd_musics
-		@musics = @product.cd_musics
-		@payment = Product.new
+  def show
+		@products = CartProduct.new
+    @product = Product.find(params[:id])
+    @artists = @product.cd_musics
+    @musics = @product.cd_musics
 	end
 
   def genre
     @products = Product.where(cd_genre_id: params[:id])
   end
+
+    # データの保存をする時にストロングパラメータを定義する。
+    # 'form_for'とセットになる。
 
     private
     def product_params

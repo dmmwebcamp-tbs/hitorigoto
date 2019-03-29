@@ -6,14 +6,19 @@ class UsersController < ApplicationController
     @message =Message.new
   end
 
+
+  def usersearch
+    #Viewのformで取得したパラメータをモデルに渡す
+  end
+
   def index
-    @user =User.all
+    @users = User.search(params[:search])
     render layout: false
   end
 
   def show
-    @message = Message.find(params[:id])
-    @user = User.find(@message.user_id)
+    @user = User.find(params[:id])
+    @message = Message.find(@user.id)
     render layout: false
   end
 
@@ -26,6 +31,17 @@ class UsersController < ApplicationController
   end
 
   def all_delivery
+    @users = User.all
+    render layout: false
+  end
+
+  def all_history
+    # @users = User.all
+    @user = User.find(params[:id])
+    # ユーザーに紐づくpurchasesの情報を取得する。
+    @user = @user.purchases
+    # purchasesに紐づくhistoryの情報を取得する。
+    @user = @user.histories
     render layout: false
   end
 
