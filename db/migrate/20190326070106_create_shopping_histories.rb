@@ -4,8 +4,8 @@ class CreateShoppingHistories < ActiveRecord::Migration[5.2]
 
       t.integer :product_id
       t.integer :purchase_id
-      t.string :quantity
-      t.string :paid_price
+      t.integer :quantity
+      t.integer :paid_price
       t.timestamps
     end
   end
