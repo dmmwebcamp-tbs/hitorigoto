@@ -32,12 +32,7 @@
                		  	   <td class="product-id"><%= product.id %></td>
                		  	   <td><%= attachment_image_tag product,:image, :fill, 40, 40, format: 'jpeg',fallback: "no_image.jpg", :size => "40x40" %></td>
                		  	   <td class="product-id"><%= product.cd_name %></td>
-               		  	   <!-- アーティストの表記がうまくいかない。楽曲モデルを作成後、対応。 (3/26 久保) -->
-                    	 　<td class="artist-name">
-                    	 	<%= product.cd_artists.each do |artist| %>
-                    	 		artist.artist_name
-                    	 	<% end %>
-                    	 </td>
+                    	 　<td class="artist-name"><%= product.cd_artist.artist_name %></td>
 						   <td class="price"><%= product.price %></td>
 						   <td class="stock"><%= product.stock_number %></td>
 						   <td class="button-edit"><%=link_to "商品詳細・編集", edit_cdpost_path(product.id),class:"btn-sm btn-success" %></td>

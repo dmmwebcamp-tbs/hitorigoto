@@ -74,3 +74,5 @@ gem 'rails4-autocomplete'
 # 仮データの投稿のため実装。
 # db/fixtures/development & productionの作成を行なっています。
 gem 'seed-fu', '~> 2.3'
+
+gem 'cocoon'

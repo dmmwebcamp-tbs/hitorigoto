@@ -16,6 +16,19 @@
 //= require jquery_ujs
 //= require autocomplete-rails
 //= require turbolinks
+//= require cocoon
 //= require_tree .
 //= require bootstrap-sprockets
 
+
+$(function () {
+    $('.slider').slick({
+        autoplay: true,
+        autoplaySpeed: 2500,
+        speed: 800,
+        dots: true,
+        arrows: false,
+        centerMode: true,
+        centerPadding: '0%'
+    });
+});
