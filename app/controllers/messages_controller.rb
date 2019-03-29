@@ -18,19 +18,18 @@ class MessagesController < ApplicationController
 # 管理人サイド
 
   def index
-     @messages =Message.all
-      render layout: false
-   end
-
-  def show
-    @message = Message.find(params[:id])
-    @user = User.find(@message.user_id)
+    @messages = Message.search(params[:search])
     render layout: false
   end
 
   def search
     #Viewのformで取得したパラメータをモデルに渡す
-    @message = Message.search(params[:search])
+  end
+
+  def show
+    @message = Message.find(params[:id])
+    @user = User.find(@message.user_id)
+    render layout: false
   end
 
 

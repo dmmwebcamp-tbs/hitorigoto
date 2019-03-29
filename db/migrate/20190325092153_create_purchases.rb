@@ -5,7 +5,7 @@ class CreatePurchases < ActiveRecord::Migration[5.2]
       t.integer :user_id
 	  t.string :sum
 	  # integer => tinyint
-	  t.integer :delivery_status
+	  t.string :delivery_status
 	  # integer => tinyint
 	  t.integer :payment
 	  t.string :add_postcode
