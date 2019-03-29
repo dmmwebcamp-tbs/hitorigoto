@@ -48,8 +48,9 @@ class ProductsController < ApplicationController
 		@payment = Product.new
 	end
 
-    # データの保存をする時にストロングパラメータを定義する。
-    # 'form_for'とセットになる。
+  def genre
+    @products = Product.where(cd_genre_id: params[:id])
+  end
 
     private
     def product_params

@@ -27,12 +27,10 @@
     <% @products.each do |product| %>
 		<tr>
 			<td class="image">
-				<!-- 画像のimgタグ -->
 			    <%= attachment_image_tag product, :image, :fill, 50, 50, format: 'jpeg',fallback:"no_image.jpg", :size => "50x50" %>
 			</td>
 			<td><%=link_to product.cd_name, product_path(product) %></td>
-			<!-- artist_name -->
-			<td><%= product.cd_name %></td>
+			<td><%= product.cd_artist.artist_name %></td>
 			<td><%= product.price %></td>
 			<!-- link_to "商品詳細" -->
 		</tr>
