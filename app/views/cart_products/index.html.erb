@@ -1,3 +1,6 @@
+
+<h2>カート内確認</h2>
+
 <!-- カート内確認 -->
     <table class="table table-striped">
 
@@ -10,12 +13,12 @@
       </thead>
 
       <tbody>
-       <% @cart_products.each do |cart| %>
+       <% @cart_products.where(:user_id => current_user ).find_each do |cart| %>
         <tr>
           <!-- 商品情報 -->
           <!-- ジャケット画像 -->
           <td class="image">
-          <%= attachment_image_tag cart.product, :image, :fill, 50, 50, fallback:"no_image.jpg" %>
+          <%= attachment_image_tag cart.product, :image, :fill, 50, 50, fallback:"no_image.jpg", :size => "50x50" %>
           </td>
           <!-- CD名 -->
           <td><%=link_to cart.product.cd_name, product_path(cart) %></td>
@@ -23,7 +26,11 @@
           <td><%= cart.product.price %></td>
 
           <!-- 購入取消ボタン -->
-          <td><%= link_to "購入取消", carts_path(@products), method: :delete, data: { confirm: '購入を取り消しますか?'} %></td>
+          <td>
+            <%= form_for cart, url:product_cart_product_path(cart,cart.id), method: :delete do |f| %>
+              <%= f.submit :購入取消 %>
+            <%end%>
+          </td>
         </tr>
         <% end %>
       </tbody>
@@ -31,11 +38,11 @@
     </table>
 
 
-    <!-- 購入手続き、戻るボタン -->
 
+    <!-- 購入手続き、戻るボタン -->
         <div class="actions">
-          <%= link_to '購入手続きに進む', account_path, class: "btn btn-success" %>
-          <%= link_to '戻る', top_path, class: "btn btn-info" %>
+          <%= link_to '購入手続きに進む', account_path(@cart_products), class: "btn btn-success" %>
+          <%= link_to '戻る', products_path(@cart_products), class: "btn btn-info" %>
         </div>
 
 

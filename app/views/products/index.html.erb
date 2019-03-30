@@ -1,13 +1,7 @@
 
 <!-- キーワード検索するタブを作る -->
-<!-- サンプル -->
-<!-- 機能は後日。プロダクトの登録フォームを作ってから保存できるところまで作成し、その後から作成となる。 -->
-
 <div class="container">
    <div class="row">
-
-
-
    				<div>
 			     <%= form_tag(products_path, :method => 'get') do %>
               　 <%= text_field_tag :search, params[:search] %>
@@ -15,42 +9,57 @@
                        <% end %>
 				</div>
 				<br>
+     
+     
 <!-- 商品を掲載する一覧ページ -->
 
 <h2>商品一覧</h2>
 
-<table class="table table-striped">
+<table class="table table-striped">  
+  
+<div class="container">
+	<div class="row">
+		<%= render 'users/side_bar' %>
 
-	<thead>
-		<tr>
-	    	<th>CDジャケット</th>
-	        <th>シングル/アルバム名</th>
-	        <th>アーティスト名</th>
-	        <th>値段</th>
-	   </tr>
+    
+    
+    
 
-	</thead>
+<!-- キーワード検索するタブを作る -->
+
+<!-- 商品を掲載する一覧ページ -->
+        <div class="col-xs-10">
+		<h2>商品一覧</h2>
+
+		<table class="table table-striped">
+
+			<thead>
+				<tr>
+			    	<th>CDジャケット</th>
+			        <th>シングル/アルバム名</th>
+			        <th>アーティスト名</th>
+			        <th>値段</th>
+			   </tr>
+			</thead>
+		    <tbody>
+		    <% @products.each do |product| %>
+				<tr>
+					<td class="image">
+						<!-- 画像のサイズ修正 -->
+					    <%= attachment_image_tag product, :image, :fill, 50, 50, fallback:"no_image.jpg", :size => "50x50" %>
+					</td>
+					<td><%= link_to product.cd_name, product_path(product) %></td>
+
+					<td><%= product.cd_artist.artist_name %></td>
+					<td><%= product.price %></td>
+				</tr>
+		    <% end %>
+			</tbody>
+
+		</table>
+	</div>
 
 
-
-    <tbody>
-    <% @products.each do |product| %>
-		<tr>
-			<td class="image">
-
-				<!-- 画像のサイズ修正 -->
-			    <%= attachment_image_tag product, :image, :fill, 50, 50, fallback:"no_image.jpg", :size => "50x50" %>
-			</td>
-			<!-- ４つ目以降の商品が呼び出せない。 -->
-			<td><%= link_to product.cd_name, product_path(product) %></td>
-
-			<td><%= product.cd_artist.artist_name %></td>
-			<td><%= number_to_yen(product.price) %></td>
-		</tr>
-    <% end %>
-	</tbody>
-
-</table>
-
+	</div>
 </div>
-</div>
+

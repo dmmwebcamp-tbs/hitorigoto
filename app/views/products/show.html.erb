@@ -1,4 +1,5 @@
 
+
 <!-- 商品詳細を表示するページ -->
 <h2>商品詳細</h2>
 
@@ -10,9 +11,7 @@
 	</div>
 
 <!-- 詳細テーブル -->
-	<div class="row">
-	  <div class="col-sm-6">
-		<table>
+		<table class="table table-striped">
 			<thead>
 				<th>アーティスト名</th>
 		        <th>シングル/アルバム名</th>
@@ -59,10 +58,12 @@
 	</div>
 
 	<!-- ボタン（カートに入れる、戻る） -->
-    <%= form_for(@products, url: product_cart_products_path(product_id: @product.id)) do |f| %>
-    <%= hidden_field :user_id, :value => current_user.id %>
+    <%= form_for(@products, url: product_cart_products_path(:product_id => @product.id)) do |f| %>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+    <%= f.hidden_field :product_id, :value => @product.id %>
 
-    <%= number_field :qunatity,in: 1...5 %>
+    <h4>購入数量</h4>
+    <%= f.number_field :quantity,in: 1...5 %>
 		<div class="actions">
 	    	<%= f.submit '購入カートに入れる', class: "btn btn-success" %>
 	    </div>

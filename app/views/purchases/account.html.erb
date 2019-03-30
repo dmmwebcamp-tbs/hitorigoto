@@ -15,6 +15,8 @@
     <!--お支払い方法、プルダウン-->
     <p><%= f.label :"お支払い方法" %>
     <%= f.select :payment, [["現金", "現金"], ["クレジット", "クレジット"]] ,class:"form-control" %></p>
+    <h4>※注意…店主はクレジットカードでの支払いを好まない為、カード情報の入力フォームは存在しません。<br>
+    それでもクレジットカードでの購入を望む場合は長野にある店舗まで直接ご来店ください。</h4>
 
 
 <% end %>
@@ -25,7 +27,7 @@
 
 <h3>購入商品詳細</h3>
 <!--購入詳細テーブル-->
-	<table>
+	<table class="table table-striped">
 		<thead>
 			<tr>
 				<th>商品名</th>
@@ -36,12 +38,12 @@
 
 		<tbody>
 		<!--持ってくるのはproducts?,purchases?-->
-		<% @products.each do |product| %>
+		<% @cart_products.each do |cp| %>
 			<tr>
 				<!--商品名、金額、数量データの反映-->
-				<td><%= product.cd_name %></td>
-				<td><%= product.price %></td>
-				<td><%= product.quantity %></td>
+				<td><%= cp.product.cd_name %></td>
+				<td><%= cp.product.price %></td>
+				<td><%= cp.quantity %></td>
 			</tr>
 		<% end %>
 		</tbody>
@@ -51,5 +53,5 @@
 <!--購入確定、戻るボタン、リンク先-->
 　　<div class="actions">
           <%= link_to '購入確定', top_path, class: "btn btn-success" %>
-          <%= link_to '戻る', products_path, class: "btn btn-info" %>
+          <%= link_to '戻る', carts_path, class: "btn btn-info" %>
     </div>

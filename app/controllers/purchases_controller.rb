@@ -4,8 +4,8 @@ class PurchasesController < ApplicationController
 		@purchases = Purchase.new
 		# binding.pry
         # カート内確認ページで生成されたIDを持ってくる。
-        # @products = current_user.all
-        @products = Product.find(params[:id])
+        #  指定したユーザのカート内情報を持ってくる。
+        @cart_products = current_user.cart_products
 	end
 
 	def confirm

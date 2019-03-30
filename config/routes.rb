@@ -32,9 +32,9 @@ resources :cd_labels
   get 'credit' => 'payments#credit'
   # get 'products' => 'products#index'
 
-  get 'carts' => 'carts#index'
+  get 'carts' => 'cart_products#index'
 
-  get 'account' => 'purchases#account'
+  get 'cart_products/:id/account' => 'purchases#account',  as: 'account'
 
   get 'users/' => 'users#index', as: "usersearch"
   get 'users/all_delivery', as: "all_delivery"
@@ -49,7 +49,7 @@ end
 
 
   resources :products do
-    resources :cart_products, only: [:create]
+    resources :cart_products, only: [:create,:destroy]
   end
   # post 'carts' => 'cart_products#create', as: "cart_product"
 
