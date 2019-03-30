@@ -33,14 +33,11 @@
 
                       <td class="shopping_price"><%= number_to_yen(p.payment) %></td>
                        <td class="status">
-
                          <%= form_for p ,url: all_delivery_update_path(user), method: :patch ,action: :all_delivery_update do |f| %>
-
-                         <%= f.select :delivery_status, [["受付中","受付中"],["発送準備中","発送準備中"],["発送済","発送済"]] %>
-
-                         <%=f.submit '更新' %>
-                           </td>
-                        <% end %>
+                           <%= f.select :delivery_status, [["受付中","受付中"],["発送準備中","発送準備中"],["発送済","発送済"]] %>
+                           <%= f.submit '更新' %>
+                         <% end %>
+                       </td>
 
 
 

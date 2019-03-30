@@ -45,7 +45,7 @@
                                             <% user_purchase.shopping_histories.each do |s| %>
                                                <%= s.product.try(:cd_name) %></td>
                                                  <% result = 0 %>
-                                                  <% result += s.paid_price * s.quantity%>
+                                                  <% result += s.paid_price.to_i * s.quantity.to_i%>
                                                    <td><%= number_to_yen(result) %></td>
                                                    <td class="shopping_account"><%= s.quantity %></td>
                                                    <td class="address"><%= user_purchase.add_address %></td>
