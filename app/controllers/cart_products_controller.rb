@@ -6,18 +6,23 @@ class CartProductsController < ApplicationController
     def create
         # binding.pry
         @product = CartProduct.new(cart_params)
+        @product.save
+        redirect_to carts_path
     end
 
     def index
     	# current_user、ユーザと紐づける?
     	@product = current_user
-    	@cart_products = current_user.cart_products
+    	@cart_products = CartProduct.all
     end
 
     def update
     end
 
     def destroy
+        @cart_products = CartProduct.find(params[:id])
+        @cart_products.destroy
+        redirect_to carts_path
     end
 
 
