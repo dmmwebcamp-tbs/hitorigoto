@@ -1,2 +1,52 @@
-<!-- ユーザ購入履歴一覧表示ページ -->
-<h1>Users#history</h1>
+                <table class= "table table-hover table-inverse table-bordered">
+                <thead>
+
+                  <tr>
+                      <th class ="user-name col-xs-1">購入者</th>
+                      <th class ="shopping_date col-xs-1">購入日</th>
+                      <th class ="shopping_price col-xs-1">価格</th>
+                      <th class ="status col-xs-1">ステータス</th>
+                      <th class ="shopping_contents col-xs-2">購入内容(名前)</th>
+                      <th class ="total_price col-xs-2">購入価格総計</th>
+                    　<th class ="shopping_account col-xs-1">数量</th>
+                      <th class ="address col-xs-2">送付先</th>
+                  　</tr>
+              　  </thead>
+
+              　　 <tbody>
+                    <tr class ="shopping-data">
+                      　 <td class=user-name><%= @user.last_name %><%= @user.first_name %></td>
+
+
+                      <% @user_purchases.each do |p| %>
+
+                      <td class="shopping_date"><%= p.created_at.strftime("%Y-%m-%d") %></td>
+
+                      <td class="shopping_price"><%= number_to_yen(p.payment) %></td>
+                       <td class="status"><%= p.delivery_status %></td>
+                         <td class="shopping_contents">
+                            <% p.shopping_histories.each do |s| %>
+                            <%= s.product.try(:cd_name) %>
+                        </td>
+
+                            <% result = 0 %>
+                            <% result += s.paid_price * s.quantity%>
+                         <td><%= number_to_yen(result) %></td>
+
+                         <td class="shopping_account"><%= s.quantity %></td>
+                         <td class="address"><%= p.add_address %></td>
+
+                    </tr>
+
+                      <% end %>
+
+
+
+                      <% end %>
+                 </tbody>
+          　  </table>
+
+          <button type="button" class="btn btn-default"><%= link_to "戻る", user_mypage_path(@user), class: "back"%></button>
+
+
+ </div>

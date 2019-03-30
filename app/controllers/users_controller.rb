@@ -78,6 +78,8 @@ class UsersController < ApplicationController
 
   # ユーザ購入履歴一覧表示
   def history
+    @user = User.find(current_user.id)
+    @user_purchases = @user.purchases
   end
 
   def mypage
