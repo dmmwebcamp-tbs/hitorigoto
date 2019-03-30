@@ -41,7 +41,9 @@
 
     <!-- 購入手続き、戻るボタン -->
         <div class="actions">
-          <%= link_to '購入手続きに進む', account_path(@cart_products), class: "btn btn-success" %>
+          <% if user_signed_in? %>
+            <%= link_to '購入手続きに進む', account_path(@cart_products), class: "btn btn-success" %>
+          <% end %>
           <%= link_to '戻る', products_path(@cart_products), class: "btn btn-info" %>
         </div>
 
