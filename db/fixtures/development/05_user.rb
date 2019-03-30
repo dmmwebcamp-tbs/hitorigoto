@@ -16,3 +16,9 @@ User.seed do |s|
 end
 
 end	
+
+
+Admin.seed do |s|
+  s.email = "aaa@aaa"
+  s.password ="g2157126"
+end
