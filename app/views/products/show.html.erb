@@ -59,13 +59,21 @@
 
 	<!-- ボタン（カートに入れる、戻る） -->
     <%= form_for(@products, url: product_cart_products_path(:product_id => @product.id)) do |f| %>
-    <%= f.hidden_field :user_id, :value => current_user.id %>
+
+      <!-- ログインしていれば、この内容が読み込まれる。 -->
+	  <% if user_signed_in? %>
+	  		<%= f.hidden_field :user_id, :value => current_user.id %>
+	  <% end %>
+
+
     <%= f.hidden_field :product_id, :value => @product.id %>
 
     <h4>購入数量</h4>
     <%= f.number_field :quantity,in: 1...5 %>
 		<div class="actions">
+		  <% if user_signed_in? %>
 	    	<%= f.submit '購入カートに入れる', class: "btn btn-success" %>
+	      <% end %>
 	    </div>
     <% end %>
 	          <%= link_to '戻る', products_path, class: "btn btn-info" %>

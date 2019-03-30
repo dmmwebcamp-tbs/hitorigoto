@@ -1,7 +1,8 @@
 
-<!-- キーワード検索するタブを作る -->
 <div class="container">
-   <div class="row">
+	<div class="row">
+		<%= render 'users/side_bar' %>
+   	            <!-- キーワード検索するタブを作る -->
    				<div>
 			     <%= form_tag(products_path, :method => 'get') do %>
               　 <%= text_field_tag :search, params[:search] %>
@@ -10,7 +11,7 @@
 				</div>
 				<br>
 
-<!-- キーワード検索するタブを作る -->
+
 
 <!-- 商品を掲載する一覧ページ -->
         <div class="col-xs-10">
