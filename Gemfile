@@ -76,3 +76,5 @@ gem 'rails4-autocomplete'
 gem 'seed-fu', '~> 2.3'
 
 gem 'cocoon'
+gem 'number_to_yen'
+

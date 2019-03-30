@@ -4,9 +4,12 @@
 <div class="col-xs-2">
 <div class="side-bar">
     <!--1段落目-->
-    <h2><ログイン></h2>
 
+    <% if user_signed_in? %>
+    <% else %>
+    <h2>ログイン</h2>
     <%=form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
     <!--メールアドレス-->
     <div class="field-1">
         <%= f.label :メールアドレス %><br>
@@ -33,26 +36,24 @@
     <%= link_to "新規登録", new_registration_path(resource_name), class: "btn btn-info" %>
 
     <% end %>
-
+    <% end %>
 
     <!--2段落目-->
     <h2><ジャンル></h2>
 
-    <!-- 今後リンク先を貼り付ける -->
-    <h4><%= link_to "邦楽", top_path %></h4>
-    <h4><%= link_to "洋楽", top_path %></h4>
-    <h4><%= link_to "ロック", top_path %></h4>
-    <h4><%= link_to "アニメ", top_path %></h4>
-    <h4><%= link_to "アイドル", top_path %></h4>
-    <h4><%= link_to "ボーカロイド", top_path %></h4>
-    <h4><%= link_to "演歌", top_path %></h4>
-    <h4><%= link_to "オーケストラ", top_path %></h4>
-    <h4><%= link_to "クラシック", top_path %></h4>
-    <h4><%= link_to "その他", top_path %></h4>
-
 
     <!--3段落目-->
-    <!--店長の紹介は消す方向なのか！？-->
+    <%= link_to "ロック",genre_path(id:1), class:"btn btn-warning col-xs-10 col-xs-offset-1" %><br>
+    <%= link_to "ジャズ",genre_path(id:2), class:"btn btn-warning col-xs-10 col-xs-offset-1" %><br>
+    <%= link_to "クラシック",genre_path(id:3), class:"btn btn-warning col-xs-10 col-xs-offset-1" %><br>
+    <%= link_to "演歌",genre_path(id:4), class:"btn btn-warning col-xs-10 col-xs-offset-1" %><br>
+    <%= link_to "ソウル",genre_path(id:5), class:"btn btn-warning col-xs-10 col-xs-offset-1" %><br>
+    <%= link_to "R&B",genre_path(id:6), class:"btn btn-warning col-xs-10 col-xs-offset-1" %><br>
+    <%= link_to "歌謡曲・演歌",genre_path(id:7), class:"btn btn-warning col-xs-10 col-xs-offset-1" %><br>
+    <%= link_to "サウンドトラック",genre_path(id:8), class:"btn btn-warning col-xs-10 col-xs-offset-1" %><br>
+    <%= link_to "K-ポップ",genre_path(id:9), class:"btn btn-warning col-xs-10 col-xs-offset-1" %><br>
+    <%= link_to "アニメ・ゲーム",genre_path(id:10), class:"btn btn-warning col-xs-10 col-xs-offset-1" %><br>
+
 
 </div>
 </div>

@@ -1,11 +1,29 @@
 
-<% if flash[:notice] %>
-	<p><%= flash[:notice] %></p>
-<% end %>
+<!-- キーワード検索するタブを作る -->
+<div class="container">
+   <div class="row">
+   				<div>
+			     <%= form_tag(products_path, :method => 'get') do %>
+              　 <%= text_field_tag :search, params[:search] %>
+            　　   <%= submit_tag "アーティスト名検索", :name => nil %>
+                       <% end %>
+				</div>
+				<br>
+     
+     
+<!-- 商品を掲載する一覧ページ -->
 
+<h2>商品一覧</h2>
+
+<table class="table table-striped">  
+  
 <div class="container">
 	<div class="row">
 		<%= render 'users/side_bar' %>
+
+    
+    
+    
 
 <!-- キーワード検索するタブを作る -->
 

@@ -5,7 +5,8 @@ class Message < ApplicationRecord
 
   def self.search(search)
       if search
-        Message.where(['content LIKE ?', "%#{search}%"])
+        Message.where(['title LIKE ? OR body LIKE ?',
+        			   "%#{search}%", "%#{search}%" ])
       else
         Message.all
       end

@@ -1,2 +1,70 @@
-<h1>Users#all_history</h1>
-<p>Find me in app/views/users/all_history.html.erb</p>
+<%= render 'owners/home' %>
+<div class="container">
+        <p id="notice"></p>
+                  <div class="alert alert-info">
+                    <%= @user.last_name %><%= @user.first_name %>様　の購入履歴詳細ページ
+                  </div>
+
+
+        <% if flash[:success] %>
+        <p><%= flash[:success] %></p>
+          <% end %>
+
+
+                <br>
+                <table class= "table table-hover table-inverse table-bordered">
+                <thead>
+
+                  <tr><th class ="shopping_date col-xs-1">購入日</th>
+                      <th class ="shopping_price col-xs-1">購入価格</th>
+                      <th class ="status col-xs-1">ステータス</th>
+                      <th class =" shopping_contents col-xs-2">購入内容</th>
+                      <th class ="total_price col-xs-2">購入価格総計</th>
+                       <th class ="shopping_accountcol-xs-2">数量</th>
+                    　<th class ="address col-xs-3">送付先</th>
+                  　</tr>
+              　  </thead>
+              　　 <tbody>
+                    <tr class ="shopping-data">
+
+                                  <% @user_purchases.each do |user_purchase| %>
+
+                                     <td class="shopping_date"><%= user_purchase.created_at.strftime("%Y-%m-%d") %></td>
+                                     <td class="shopping_price"><%= number_to_yen(user_purchase.payment) %></td>
+                                     <td class="status">
+                                       <%= form_for user_purchase ,url: all_history_update_path(user_purchase), method: :patch ,action: :all_history_update do |f| %>
+
+                                      <%= f.select :delivery_status, [["受付中","受付中"],["発送準備中","発送準備中"],["発送済","発送済"]] %>
+
+                                      <%=f.submit '更新' %>
+
+                                      </td>
+
+                                       <td class="shopping_contents">
+
+                                            <% user_purchase.shopping_histories.each do |s| %>
+                                               <%= s.product.try(:cd_name) %></td>
+                                                 <% result = 0 %>
+                                                  <% result += s.paid_price * s.quantity%>
+                                                   <td><%= number_to_yen(result) %></td>
+                                                   <td class="shopping_account"><%= s.quantity %></td>
+                                                   <td class="address"><%= user_purchase.add_address %></td>
+
+                              </tr>
+
+                      <% end %>
+
+                      <% end %>
+
+                      <% end %>
+
+                 </tbody>
+          　  </table>
+
+
+
+
+          <button type="button" class="btn btn-default"><%= link_to "戻る", owners_top_path, class: "back"%></button>
+
+
+ </div>

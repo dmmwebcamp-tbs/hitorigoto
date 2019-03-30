@@ -38,7 +38,15 @@ class ProductsController < ApplicationController
 
 
   def index
-    @products = Product.all
+    @artists = CdArtist.search(params[:search])
+
+    @artists.each.with_index(1) do |artist, i|
+      if i==1
+        @products = artist.products
+      else
+        @products += artist.products
+      end
+    end
 	end
 
   def show
@@ -48,8 +56,13 @@ class ProductsController < ApplicationController
     @musics = @product.cd_musics
 	end
 
+  def genre
+    @products = Product.where(cd_genre_id: params[:id])
+  end
+
     # データの保存をする時にストロングパラメータを定義する。
     # 'form_for'とセットになる。
+
     private
     def product_params
       params.require(:product).permit(:cd_genre_id, :cd_label_id, :cd_type, :cd_name, :cd_artist_id, :owner_comment, :image, :price, :saled_date, :stock_number)
