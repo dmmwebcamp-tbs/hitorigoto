@@ -38,7 +38,15 @@ class ProductsController < ApplicationController
 
 
   def index
-    @products = Product.all
+    @artists = CdArtist.search(params[:search])
+
+    @artists.each.with_index(1) do |artist, i|
+      if i==1
+        @products = artist.products
+      else
+        @products += artist.products
+      end
+    end
 	end
 
   def show
