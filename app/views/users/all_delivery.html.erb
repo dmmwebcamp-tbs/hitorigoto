@@ -50,7 +50,7 @@
                         </td>
 
                             <% result = 0 %>
-                            <% result += s.paid_price * s.quantity%>
+                            <% result += s.paid_price.to_i * s.quantity.to_i %>
                          <td><%= number_to_yen(result) %></td>
 
                          <td class="shopping_account"><%= s.quantity %></td>

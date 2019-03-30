@@ -2,9 +2,19 @@
 <!-- キーワード検索するタブを作る -->
 <!-- サンプル -->
 <!-- 機能は後日。プロダクトの登録フォームを作ってから保存できるところまで作成し、その後から作成となる。 -->
-<%= autocomplete_field_tag 'user[email]', nil,  autocomplete_user_email_users_path %>
+
+<div class="container">
+   <div class="row">
 
 
+
+   				<div>
+			     <%= form_tag(products_path, :method => 'get') do %>
+              　 <%= text_field_tag :search, params[:search] %>
+            　　   <%= submit_tag "アーティスト名検索", :name => nil %>
+                       <% end %>
+				</div>
+				<br>
 <!-- 商品を掲載する一覧ページ -->
 
 <h2>商品一覧</h2>
@@ -35,9 +45,12 @@
 			<td><%= link_to product.cd_name, product_path(product) %></td>
 
 			<td><%= product.cd_artist.artist_name %></td>
-			<td><%= product.price %></td>
+			<td><%= number_to_yen(product.price) %></td>
 		</tr>
     <% end %>
 	</tbody>
 
 </table>
+
+</div>
+</div>

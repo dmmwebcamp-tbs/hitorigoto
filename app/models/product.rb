@@ -13,4 +13,6 @@ class Product < ApplicationRecord
 
      belongs_to :cd_label
 
+
+
 end
