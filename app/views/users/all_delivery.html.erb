@@ -2,27 +2,29 @@
 <div class="container">
         <p id="notice"></p>
 
+<% if flash[:success] %>
+  <p><%= flash[:success] %></p>
+<% end %>
 
+                <table class= "table table-hover table-inverse table-bordered">
+                <thead>
 
-              	<table class= "table table-hover table-inverse table-bordered">
-            		<thead>
-
-            		  <tr>
+                  <tr>
                       <th class ="user-name col-xs-1">購入者</th>
-              			  <th class ="shopping_date col-xs-1">購入日</th>
+                      <th class ="shopping_date col-xs-1">購入日</th>
                       <th class ="shopping_price col-xs-1">(価格)</th>
                       <th class ="status col-xs-1">ステータス</th>
-               			  <th class ="shopping_contents col-xs-2">購入内容(名前)</th>
+                      <th class ="shopping_contents col-xs-2">購入内容(名前)</th>
                       <th class ="total_price col-xs-2">購入価格総計</th>
-                 		　<th class ="shopping_account col-xs-1">数量</th>
+                    　<th class ="shopping_account col-xs-1">数量</th>
                       <th class ="address col-xs-2">送付先</th>
                       <th class ="user_show col-xs-1">ユーザ詳細</th>
-              		　</tr>
-          		　  </thead>
-           		　　 <tbody>
-              		 <% @users.each do |user| %>
-               		  <tr class ="shopping-data">
-                   		　 <td class=user-name><%= user.last_name %><%= user.first_name %></td>
+                  　</tr>
+              　  </thead>
+              　　 <tbody>
+                   <% @users.each do |user| %>
+                    <tr class ="shopping-data">
+                      　 <td class=user-name><%= user.last_name %><%= user.first_name %></td>
 
 
                       <% user.purchases.each do |p| %>
@@ -32,15 +34,17 @@
                       <td class="shopping_price"><%= number_to_yen(p.payment) %></td>
                        <td class="status">
 
-                        <%= form_for p do |f| %>
+                         <%= form_for p ,url: all_delivery_update_path(user), method: :patch ,action: :all_delivery_update do |f| %>
 
                          <%= f.select :delivery_status, [["受付中","受付中"],["発送準備中","発送準備中"],["発送済","発送済"]] %>
 
                          <%=f.submit '更新' %>
-                       </td>
-                       <% end %>
+                           </td>
+                        <% end %>
 
-						             <td class="shopping_contents">
+
+
+                         <td class="shopping_contents">
                             <% p.shopping_histories.each do |s| %>
                             <%= s.product.try(:cd_name) %>
                         </td>
@@ -64,8 +68,8 @@
                       <% end %>
 
                       <% end %>
-           			 </tbody>
-      		　  </table>
+                 </tbody>
+          　  </table>
 
 
 

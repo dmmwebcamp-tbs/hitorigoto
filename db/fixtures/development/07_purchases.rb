@@ -4,7 +4,7 @@
   z += 1
 
 Purchase.seed do |s|
-
+   s.user_id = "#{z}"
    s.delivery_status = "受付中"
    s.payment = "1000"
    s.add_postcode = "1000"

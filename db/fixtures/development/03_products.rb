@@ -10,7 +10,7 @@ Product.seed do |s|
   s.cd_type = "1"
   s.cd_name = " CDの名前#{z}"
   s.owner_comment = "店長からのコメント#{z}"
-  s.image = "#{z}.jpeg"
+  s.image = Rails.root.join("db/fixtures/image/test#{z}.jpg").open
   s.price = "1000"
   s.saled_date = "2019年3月28日"
   s.stock_number = "#{z}"

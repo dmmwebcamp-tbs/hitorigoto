@@ -2,11 +2,21 @@
 
 
     <div class="contents clearfix">
-      <div class ="box1"><%= link_to "商品一覧", cdposts_path %></div>
-      <div class ="box2"><%= link_to "購入履歴・配送状況一覧",all_delivery_path %></div>
-      <div class ="box3"><%= link_to "でんしょばと",messages_path %></div>
-      <div class ="box4"><%= link_to "商品投稿", new_cdpost_path %></div>
-      <div class ="box5"><%= link_to "お客様の情報", users_path %></div>
+     <%= link_to cdposts_path do %>
+      <div class ="box1">商品一覧</div>
+     <% end %>
+     <%= link_to all_delivery_path do %>
+      <div class ="box2">購入履歴・配送状況一覧</div>
+      <% end %>
+      <%= link_to messages_path do %>
+      <div class ="box3">でんしょばと</div>
+       <% end %>
+       <%= link_to new_cdpost_path do %>
+      <div class ="box4">商品投稿</div>
+      <% end %>
+      <%= link_to users_path do %>
+      <div class ="box5">お客様の情報</div>
+      <% end %>
     <div>
   </body>
 </html>
