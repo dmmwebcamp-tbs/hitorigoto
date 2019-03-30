@@ -15,6 +15,4 @@ Product.seed do |s|
   s.saled_date = "2019年3月28日"
   s.stock_number = "#{z}"
 end
-
-
 end

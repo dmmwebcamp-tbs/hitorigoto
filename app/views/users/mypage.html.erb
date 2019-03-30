@@ -43,7 +43,7 @@
 		<% if @user.id == current_user.id %>
 		<p><%= link_to "個人情報を編集",edit_user_path(@user),class:"col-xs-12 btn btn-default glyphicon glyphicon-wrench" %></p>
 		<p><%= link_to "パスワードの再設定・退会",edit_user_registration_path,class:"col-xs-12 btn btn-default glyphicon glyphicon-wrench" %></p>
-		<p><%= link_to "購入履歴の確認",user_path(@user),class:"col-xs-12 btn btn-default glyphicon glyphicon-wrench" %></p>
+		<p><%= link_to "購入履歴の確認",user_history_path(@user),class:"col-xs-12 btn btn-default glyphicon glyphicon-wrench" %></p>
 		<% end %>
 	</div>
 

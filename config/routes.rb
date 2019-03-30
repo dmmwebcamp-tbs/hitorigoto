@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   get '/homes/about' => 'homes#about'
   get '/genres/:id' => 'products#genre', as: 'genre'
   patch '/purchase/:id/all_delivery' => 'purchases#all_delivery_update', as: "all_delivery_update"
- patch '/purchase/:id/all_history' => 'purchases#all_history_update', as: "all_history_update"
+  patch '/purchase/:id/all_history' => 'purchases#all_history_update', as: "all_history_update"
+  get '/history/:id' => 'users#history', as: 'user_history'
 
 resources :messages, only: [:new, :create, :index, :show]
 
