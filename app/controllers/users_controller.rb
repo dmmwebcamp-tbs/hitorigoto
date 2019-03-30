@@ -7,10 +7,6 @@ class UsersController < ApplicationController
   end
 
 
-  def usersearch
-    #Viewのformで取得したパラメータをモデルに渡す
-  end
-
   def index
     @users = User.search(params[:search])
     render layout: false
@@ -35,13 +31,16 @@ class UsersController < ApplicationController
     render layout: false
   end
 
+
+
   def all_history
-    # @users = User.all
     @user = User.find(params[:id])
+    @purchases = Purchase.all
+    @user_purchases = @purchases.where(params[:user_id])
     # ユーザーに紐づくpurchasesの情報を取得する。
-    @user = @user.purchases
+    #@user = @user.purchases
     # purchasesに紐づくhistoryの情報を取得する。
-    @user = @user.histories
+    #@user = @user.histories
     render layout: false
   end
 
@@ -70,14 +69,14 @@ class UsersController < ApplicationController
   end
 
 
-	# ユーザ退会
+  # ユーザ退会
   # def unsubscribe
   # end
-	# ユーザ登録情報削除（論理削除）
+  # ユーザ登録情報削除（論理削除）
   # def destroy
   # end
 
-	# ユーザ購入履歴一覧表示
+  # ユーザ購入履歴一覧表示
   def history
   end
 
@@ -88,7 +87,7 @@ class UsersController < ApplicationController
 
 private
   def user_params
-    params.require(:user).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :postcode, :address, :phone_number, :reply)
+    params.require(:user).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :postcode, :address, :phone_number, :reply, :delivery_status)
   end
 
 

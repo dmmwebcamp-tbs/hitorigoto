@@ -20,12 +20,29 @@ class PurchasesController < ApplicationController
 	end
 
 
+  	def all_delivery_update
+		@purchase= Purchase.find(params[:id])
+		if @purchase.update(purchase_params)
+			flash[:success] = "配送状況を変更しました"
+			redirect_to all_delivery_path
+		end
+	end
+
+	def all_history_update
+		@purchase= Purchase.find(params[:id])
+		if @purchase.update(purchase_params)
+			flash[:success] = "配送状況を変更しました"
+			redirect_to all_history_path
+		end
+	end
+
+
 	private
-    def Product_params
+    def product_params
         params.require(:product).permit(:cd_name, :price, :quantity)
     end
 
-     def Purchase_params
+     def purchase_params
         params.require(:purchase).permit(:delivery_status)
     end
 
