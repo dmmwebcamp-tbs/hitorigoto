@@ -16,7 +16,37 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+body {
+  font-family: 'TsukuBRdGothic-Regular';
+}
 
+.about-title{
+  font-family: 'TsukuBRdGothic-Regular';
+
+}
+
+table {
+  font-weight: bold;
+}
+
+.main-menu{
+  font-size:18px;
+  font-weight: bold;
+  font-color:black;
+  font-family:'Gulim';
+}
+
+.user-title{
+  margin-left:50px;
+}
+
+.New-items{
+  font-color:yellow;
+  font-size:20px;
+  font-weight: bold;
+  margin-left:90px;
+  background-color:gold;
+}
 .slider div {
     width: 400px;
     height: 400px;
@@ -27,6 +57,12 @@
 .slider img {
     width: 400px;
     height: 400px;
+    position:relative;
+}
+
+.category{
+  margin-left:20px;
+  margin-top:80px;
 }
 
 .main-visual {
@@ -35,6 +71,7 @@
   background-image: url(d.jpg);
   background-size: cover;
   background-position: bottom;
+
 }
 
 .new-index {
@@ -55,6 +92,7 @@
 
 body {
 background-image: url(back.jpg);
+
 }
 
 .navbar-inverse {
@@ -62,12 +100,13 @@ background-image: url(back.jpg);
 }
 
 .block__30 {
-  height: 30px;
+  height: 90px;
   width: 100%;
 }
 
 .harf_field {
   height: 600px;
   width: 600px;
-  background-color: rgba(0,0,0,0.4)
+  background-color: rgba(0,0,0,0.5)
 }
+
